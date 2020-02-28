@@ -17,7 +17,7 @@ quartier.o : quartier.cpp quartier.h foyer.h
 	g++ ${OPTIONS} -c quartier.cpp
 
 clean:
-	rm -rf tp1 *~ *.o
+	rm -rf tp1 *~ *.o tp1.dSYM
 
 test: tp1
 	./tp1 data01.txt

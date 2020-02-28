@@ -3,7 +3,8 @@
   UQAM | Département d'informatique
   Hiver 2020 | TP1 | tableau.h
 */
-
+/* modification prise en compte 
+*/
 // Ces deux lignes permettent d'éviter d'inclure 2 fois ce .h à la compilation.
 #if !defined(__TABLEAU_H__)
 #define __TABLEAU_H__
