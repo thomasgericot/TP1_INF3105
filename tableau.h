@@ -7,7 +7,9 @@
 // Ces deux lignes permettent d'éviter d'inclure 2 fois ce .h à la compilation.
 #if !defined(__TABLEAU_H__)
 #define __TABLEAU_H__
-
+/* 
+  heyeybcebd
+*/
 
 template <class T>
 class Tableau
