@@ -5,6 +5,7 @@
 OPTIONS = -g -O0 -Wall
 #OPTIONS = -O2 -Wall
 
+
 all : tp1
 
 tp1 : tp1.cpp foyer.o quartier.o
