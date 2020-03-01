@@ -16,8 +16,10 @@ class Foyer {
     int revenu;
     int NombreMenage;
 
-    Foyer(int ide, int revenu, int NombreMenage);
-  private:
+public:
+    Foyer(int ide=0, int revenu=0, int NombreMenage=0);
+    //Foyer(const Foyer& o);
+
     
 
 

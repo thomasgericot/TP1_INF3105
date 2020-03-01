@@ -16,22 +16,17 @@ using namespace std;
 class Quartier {
   public:
     string NomQuartier;
-    int ide;
-    int revenu;
-    int NombreMenage;
     
-    
-    
-    
-    
-    
-    
-    
-    
+    Tableau<Foyer> foyers;
   public:
+    Quartier() {}
+    ~Quartier(){}
+    void setName(string name) {NomQuartier=name;}
+    void ajouterFoyer(Foyer f){foyers.ajouter(f);}
     
+    void effacer() {foyers.vider();}
     
-    
+    int MoyenneQuartier();
 
 
   friend std::ostream& operator << (std::ostream&, const Quartier&);

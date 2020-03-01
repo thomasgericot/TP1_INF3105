@@ -26,7 +26,8 @@ std::ostream& operator << (std::ostream& os, const Foyer& foyer) {
   return os;
 }
 
-std::istream& operator >> (std::istream& is, Foyer& foyer) {
-    
-    return is;
+std::istream& operator >> (std::istream& bob, Foyer& foyer)
+{
+    bob>>foyer.ide>>foyer.revenu>>foyer.NombreMenage;
+    return bob;
 }
