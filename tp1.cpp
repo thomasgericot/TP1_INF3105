@@ -24,9 +24,7 @@ int tp1(istream& entree){
     std::string limite;
     std:: getline(entree,Nom);
     std::getline(entree,Nom2);
-    cout<<Nom<<endl;
-    cout<<Nom2<<endl;
-    cout<<"Le temps pluvieux"<<endl;
+    
     
     
     while(entree>>car){
