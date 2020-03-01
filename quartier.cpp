@@ -29,12 +29,12 @@ std::istream& operator >> (std::istream& is, Quartier& q) {
     
     std:: getline(is,chaine_courante2,'\t');
     q.ide=std::stoi(chaine_courante2);
-    cout<<q.ide<<endl;
+    
     
     
     std::getline(is,chaine_courante2,' ');
     q.revenu=std::stoi(chaine_courante2);
-    cout<<q.revenu<<endl;
+    
     
     
     q.NombreMenage=std::stoi(chaine_courante2);

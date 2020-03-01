@@ -19,18 +19,19 @@ int tp1(istream& entree){
     char car;
     Tableau<Quartier> re1= Tableau<Quartier>(8);
     std::string pb(";");
-    
     std::string Nom;
     std::string Nom2;
     std::string limite;
     std:: getline(entree,Nom);
     std::getline(entree,Nom2);
+    cout<<Nom<<endl;
+    cout<<Nom2<<endl;
     
     
     while(entree>>car){
         
-        entree.unget();
         Quartier q;
+        cout<<entree<<endl;
         entree >> q;
         
         
