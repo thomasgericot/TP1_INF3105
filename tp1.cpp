@@ -15,7 +15,13 @@
 #include"math.h"
 
 
+
 using namespace std;
+
+int code_ASCII(char c)
+{
+ return int(c);
+}
 
 int seuil_pauvrete(int nbPersonnes){
     return round(7000+850*(nbPersonnes-2));
@@ -29,9 +35,7 @@ int tp1(istream& entree){
     bool ajouterFoyer=false;
     Quartier quartier_bas;
     Quartier quartier_haut;
-     cout<<"s"<<endl;    
-    
-    Quartier quartier;
+   Quartier quartier;
     while(std::getline(entree,line))
     {
         if( (line.find(";") == string::npos)&& (ajouterFoyer==false) )
@@ -57,10 +61,7 @@ int tp1(istream& entree){
         }
     }
     
-    //Affichage sur la sortie standart:
     
-    
-    // calcul revenu moyen par quartier
     cout<<"a) ";
     int moyenne = 0;
     for(int i=0;i<re1.nbElements;i++)
@@ -71,23 +72,62 @@ int tp1(istream& entree){
     cout<<"Revenu moyen:\t"<<round(moyenne)<<endl;
     
     
-        
+        //Affichage Ordre Croissant
+    
     for(int i=0;i<re1.nbElements;i++)
     {
-        if(re1[i].MoyenneQuartier()<moyenne)
+        if(re1[i].MoyenneQuartier()<=moyenne)
         {
-                re2.ajouter(re1[i]);
+            re2.ajouter(re1[i]);
         }
-        
-        
+    }
+           
+            
+            
+            for(int j=0;j<re2.nbElements;j++){
+                
+
+                if(re2[j].MoyenneQuartier()>re2[j+1].MoyenneQuartier()){
+                    re2.inserer(re2[j],j+1);
+                    
+                }
+                
+                if(re2[j].MoyenneQuartier()==re2[j+1].MoyenneQuartier()){
+                    string s1 =re1[i].NomQuartier;
+                    string s2 =re2[j].NomQuartier;
+                    
+                    for(int u = 0; u < min(s1.size(),s2.size()); ++u)
+                      {
+                         char c1 = s1[u];
+                         char c2 =s2[u];
+                         if(int(c1)<int(c2)){
+                         re2.inserer(re1[i],j);
+                          }
+                         if(int(c1)>int(c2)){
+                             re2.inserer(re1[i],j+1);
+                         }
+                        
+                    }
+                    
+                }
+                
+                
+            
             }
+            
+        
+        
+        }
+    }
+    cout<<re2.nbElements<<endl;
     
     
     cout<<"b) Liste des quartiers defavorables.\n";
+    
     for(int i=0;i<re2.nbElements;i++)
     {
         
-        cout<<re2[i].NomQuartier<<"\t"<<"Revenu moyen: "<<re2[i].MoyenneQuartier()<<endl;
+        cout<<re2[i].NomQuartier<<"\t\t"<<"Revenu moyen: "<<re2[i].MoyenneQuartier()<<endl;
     }
     
     
@@ -147,6 +187,7 @@ int tp1(istream& entree){
     
     return 0;
 }
+
 
 
 
