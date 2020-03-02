@@ -18,7 +18,7 @@
 using namespace std;
 
 int seuil_pauvrete(int nbPersonnes){
-    return (7000+850*(nbPersonnes-2));
+    return round(7000+850*(nbPersonnes-2));
 }
 
 int tp1(istream& entree){
