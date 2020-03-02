@@ -16,9 +16,6 @@
 
 
 using namespace std;
-float calcul_pourcentage(int nombre_menage_total, int nombre_sous_seuil){
-    return nombre_sous_seuil/nombre_menage_total;
-}
 
 int seuil_pauvrete(int nbPersonnes){
     return (7000+850*(nbPersonnes-2));
@@ -131,7 +128,7 @@ int tp1(istream& entree){
         
         for(int j=0;j<re1[i].foyers.nbElements;j++){
             
-            nombre_menage_total=nombre_menage_total+re1[i].foyers[j].NombreMenage;
+            nombre_menage_total++;
             
             if (re1[i].foyers[j].revenu < seuil_pauvrete(re1[i].foyers[j].NombreMenage))
             {
@@ -143,11 +140,10 @@ int tp1(istream& entree){
         }
     
     
-    cout<<nombre_sous_seuil<<endl;
-    cout<<nombre_menage_total<<endl;
     
     
-    cout<<"d) Pourcentage de menages dont le revenu est faibles: "<<((double)nombre_sous_seuil/(double)nombre_menage_total)*100<<endl;
+    
+    cout<<"d) Pourcentage de menages dont le revenu est faible: "<<round(((double)nombre_sous_seuil/(double)nombre_menage_total)*100)<<endl;
     
     return 0;
 }
