@@ -29,7 +29,7 @@ int tp1(istream& entree){
     bool ajouterFoyer=false;
     Quartier quartier_bas;
     Quartier quartier_haut;
-    
+    cout<<"s"<<endl;    
     
     Quartier quartier;
     while(std::getline(entree,line))
