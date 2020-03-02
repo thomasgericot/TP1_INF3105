@@ -26,7 +26,7 @@ class Quartier {
     
     void effacer() {foyers.vider();}
     
-    int MoyenneQuartier();
+    int const MoyenneQuartier();
 
 
   friend std::ostream& operator << (std::ostream&, const Quartier&);
