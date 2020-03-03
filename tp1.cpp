@@ -78,47 +78,21 @@ int tp1(istream& entree){
     {
         if(re1[i].MoyenneQuartier()<=moyenne)
         {
+            
             re2.ajouter(re1[i]);
         }
     }
-           
-            
-            
-            for(int j=0;j<re2.nbElements;j++){
-                
-
-                if(re2[j].MoyenneQuartier()>re2[j+1].MoyenneQuartier()){
-                    re2.inserer(re2[j],j+1);
-                    
-                }
-                
-                if(re2[j].MoyenneQuartier()==re2[j+1].MoyenneQuartier()){
-                    string s1 =re1[i].NomQuartier;
-                    string s2 =re2[j].NomQuartier;
-                    
-                    for(int u = 0; u < min(s1.size(),s2.size()); ++u)
-                      {
-                         char c1 = s1[u];
-                         char c2 =s2[u];
-                         if(int(c1)<int(c2)){
-                         re2.inserer(re1[i],j);
-                          }
-                         if(int(c1)>int(c2)){
-                             re2.inserer(re1[i],j+1);
-                         }
-                        
-                    }
-                    
-                }
-                
-                
-            
-            }
-            
+    
+    for(int u=0;u<re2.nbElements;u++){
         
         
-        }
+        
+    
+        
     }
+            
+               
+        
     cout<<re2.nbElements<<endl;
     
     
@@ -215,3 +189,40 @@ int main(int argc, const char** argv){
 
     return 0;
 }
+
+
+/*for(int j=0;j<re2.nbElements;j++){
+               while(re2[j].MoyenneQuartier()>re2[j+1].MoyenneQuartier()){
+            
+
+            if(re2[j].MoyenneQuartier()>re2[y].MoyenneQuartier()){
+                re2.inserer(re2[j],j+1);
+                
+            }
+            
+            /*if(re2[j].MoyenneQuartier()==re2[j+1].MoyenneQuartier()){
+                string s1 =re1[i].NomQuartier;
+                string s2 =re2[j].NomQuartier;
+                
+                for(int u = 0; u < min(s1.size(),s2.size()); ++u)
+                  {
+                     char c1 = s1[u];
+                     char c2 =s2[u];
+                     if(int(c1)<int(c2)){
+                     re2.inserer(re1[i],j);
+                      }
+                     if(int(c1)>int(c2)){
+                         re2.inserer(re1[i],j+1);
+                     }
+                    
+                }
+                
+            }*/
+               /*}
+            
+            
+        
+        /* }
+
+        */
+    
