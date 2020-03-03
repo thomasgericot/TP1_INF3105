@@ -191,38 +191,5 @@ int main(int argc, const char** argv){
 }
 
 
-/*for(int j=0;j<re2.nbElements;j++){
-               while(re2[j].MoyenneQuartier()>re2[j+1].MoyenneQuartier()){
-            
 
-            if(re2[j].MoyenneQuartier()>re2[y].MoyenneQuartier()){
-                re2.inserer(re2[j],j+1);
-                
-            }
-            
-            /*if(re2[j].MoyenneQuartier()==re2[j+1].MoyenneQuartier()){
-                string s1 =re1[i].NomQuartier;
-                string s2 =re2[j].NomQuartier;
-                
-                for(int u = 0; u < min(s1.size(),s2.size()); ++u)
-                  {
-                     char c1 = s1[u];
-                     char c2 =s2[u];
-                     if(int(c1)<int(c2)){
-                     re2.inserer(re1[i],j);
-                      }
-                     if(int(c1)>int(c2)){
-                         re2.inserer(re1[i],j+1);
-                     }
-                    
-                }
-                
-            }*/
-               /*}
-            
-            
-        
-        /* }
-
-        */
     
