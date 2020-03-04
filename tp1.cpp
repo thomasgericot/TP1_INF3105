@@ -82,8 +82,9 @@ int tp1(istream& entree){
             re2.ajouter(re1[i]);
         }
     }
+    
     cout<<re2[0].MoyenneQuartier()<<endl;
-    cout<<re2[1].MoyenneQuartier()<<endl;
+    
         
     for (int u=0; u<re2.nbElements;u++){
         
