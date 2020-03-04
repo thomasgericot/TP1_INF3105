@@ -59,6 +59,9 @@ int tp1(istream& entree){
         }
     }
     
+    // peut  on enlever le reste en oprant dans la classe quartier.h ?
+    
+    
     
     cout<<"a) ";
     int moyenne = 0;
@@ -70,7 +73,7 @@ int tp1(istream& entree){
     cout<<"Revenu moyen:\t"<<round(moyenne)<<endl;
     
     
-        //Affichage Ordre Croissant
+        
     
     for(int i=0;i<re1.nbElements;i++)
     {
@@ -80,9 +83,12 @@ int tp1(istream& entree){
             re2.ajouter(re1[i]);
         }
     }
-    cout<<re2[0].MoyenneQuartier()<<endl;
-    cout<<re2[1].MoyenneQuartier()<<endl;
-        
+    
+    
+    // Affichage croissant, probleme d'index + pb de types point pour l'ordre alphabtique
+    
+    
+    /*
     for (int u=0; u<re2.nbElements;u++){
         
         for(int p=0;p<re2.nbElements;p++){
@@ -92,34 +98,36 @@ int tp1(istream& entree){
             re2.enlever(u);
         }
             if(re2[u].MoyenneQuartier()==re2[p].MoyenneQuartier()){
-                
-                string &s1;
-                string &s2;
-                s1=re2[u].NomQuartier;
-                 s2=re2[p].NomQuartier;
-                
-        for(int o = 0; o < min(s1.size(),s2.size()); o++)
-                  {
-                     string *c1 = s1;
-                     string *c2 = s2;
-                     if(int(*c1)<int(*c2)){
-                     re2.inserer(re2[u],p+1);
-                     re2.enlever(u);
-                      }
-                     if(int(*c1)>int(*c2)){
+                    
+                    string &s1;
+                    string &s2;
+                    s1=re2[u].NomQuartier;
+                     s2=re2[p].NomQuartier;
+                    
+            for(int o = 0; o < min(s1.size(),s2.size()); o++)
+                      {
+                         string *c1 = s1;
+                         string *c2 = s2;
+                         if(int(*c1)<int(*c2)){
                          re2.inserer(re2[u],p+1);
                          re2.enlever(u);
-                     }
-                      if(int(*c1)==int(*c2)){
-                          c1++;
-                          c2++;
-                      }
-                    
-                }
-        
-          }
+                          }
+                         if(int(*c1)>int(*c2)){
+                             re2.inserer(re2[u],p+1);
+                             re2.enlever(u);
+                         }
+                          if(int(*c1)==int(*c2)){
+                              c1++;
+                              c2++;
+                          }
+                        
+                    }
+            
+              }
+            
        }
     }
+     */
     
         
     
@@ -226,3 +234,6 @@ int main(int argc, const char** argv){
 
 
     
+/*
+ 
+ */
