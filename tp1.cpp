@@ -82,18 +82,29 @@ int tp1(istream& entree){
             re2.ajouter(re1[i]);
         }
     }
-    
-    for(int u=0;u<re2.nbElements;u++){
+    cout<<re2[0].MoyenneQuartier()<<endl;
+    cout<<re2[1].MoyenneQuartier()<<endl;
         
+    for (int u=0; u<re2.nbElements;u++){
         
+        for(int p=0;p<re2.nbElements;p++){
+        if(re2[u].MoyenneQuartier()>re2[p].MoyenneQuartier()){
+            
+            re2.inserer(re2[u],p+1);
+            re2.enlever(u);
+        }
         
-    
+        }
+        
         
     }
+    
+        
+    
             
                
         
-    cout<<re2.nbElements<<endl;
+    
     
     
     cout<<"b) Liste des quartiers defavorables.\n";
