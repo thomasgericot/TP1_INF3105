@@ -37,6 +37,8 @@ class Tableau
 
 
     Tableau<T>&    operator = (const Tableau<T>& autre);
+    
+    Tableau<T>&    operator += (const Tableau<T>& autre);
 
     bool           operator == (const Tableau<T>& autre) const;
 
@@ -184,6 +186,17 @@ Tableau<T>& Tableau<T>::operator = (const Tableau<T>& autre){
         elements[i] = autre.elements[i];
     return *this;
 }
+
+template <class T>
+Tableau<T>& Tableau<T>::operator += (const Tableau<T>& autre)
+{
+    if(this==&autre) return *this;
+
+    for(int i=0;i<autre.nbElements;i++)
+        this->ajouter(autre.elements[i]);
+    return *this;
+}
+
 
 template <class T>
 bool Tableau<T>::operator == (const Tableau<T>& autre) const{

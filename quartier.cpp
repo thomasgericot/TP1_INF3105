@@ -14,6 +14,23 @@
 
 
 using namespace std;
+
+Quartier::Quartier(const Quartier& obj) :
+NomQuartier(obj.NomQuartier),
+foyers(obj.foyers)
+{
+    
+}
+
+Quartier& Quartier::operator = (const Quartier& obj)
+{
+    NomQuartier=obj.NomQuartier;
+    foyers=obj.foyers;
+    
+    return *this;
+}
+
+
 std::ostream& operator << (std::ostream& os, const Quartier& q) {
     os<<"Le nom du quartier est: "<<q.NomQuartier<<endl;
     for(int i=0;i<q.foyers.nbElements;i++)

@@ -20,6 +20,8 @@ class Quartier {
     Tableau<Foyer> foyers;
   public:
     Quartier() {}
+    Quartier(const Quartier&);
+    
     ~Quartier(){}
     void setName(string name) {NomQuartier=name;}
     void ajouterFoyer(Foyer f){foyers.ajouter(f);}
@@ -27,6 +29,8 @@ class Quartier {
     void effacer() {foyers.vider();}
     
     int MoyenneQuartier();
+    
+    Quartier& operator = (const Quartier&);
 
 
   friend std::ostream& operator << (std::ostream&, const Quartier&);
