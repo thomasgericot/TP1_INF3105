@@ -8,6 +8,7 @@
 #include "quartier.h"
 #include"math.h"
 #include<string>
+#include <time.h>
 
 
 
@@ -21,14 +22,14 @@ int seuil_pauvrete(int nbPersonnes)
 }
 
 
-// bubbleSortNom permet de trier les noms de quartiers possédant les revenus moyens les plus bas dans l'ordre
+// bubbleSortNom permet de trier les noms de quartiers possédant les memes revenus moyens les plus bas dans l'ordre
 // alphabétique.
 void bubbleSortNom(Tableau<Quartier>& arr)
 {
     int n = arr.nbElements;
     for (int i = 0; i < n-1; i++)
     {
-        // Last i elements are already in place
+        
         for (int j = 0; j < n-i-1; j++)
         {
             if (arr[j].NomQuartier > arr[j+1].NomQuartier)
@@ -70,9 +71,9 @@ int tp1(istream& entree)
 {
     
     Tableau<Quartier> re1= Tableau<Quartier>(8);
-    Tableau<Quartier> re2= Tableau<Quartier>(8);
+    Tableau<Quartier> quartier_sous_moyenne= Tableau<Quartier>(8);
     
-    // Parsing fichier
+    // Parcourt fichier
     std::string line;
     bool ajouterFoyer=false;
     Quartier quartier_bas;
@@ -116,36 +117,36 @@ int tp1(istream& entree)
     cout<<"Revenu moyen:\t"<<round(moyenne)<<endl;
     
     
-    // Trouve quartier sous la moyenne
+    // Trouve les quartiers sous la moyenne.
     for(int i=0;i<re1.nbElements;i++)
     {
         if(re1[i].MoyenneQuartier()<=moyenne)
         {
-            re2.ajouter(re1[i]);
+            quartier_sous_moyenne.ajouter(re1[i]);
         }
     }
     
     // Tri les moyennes de quartier des quartiers "pauvres" par ordre croissant.
-    bubbleSortMoyenne(re2);
+    bubbleSortMoyenne(quartier_sous_moyenne);
     
     // Stocke les quartiers ayant la meme Moyenne de quartier dans un tableau.
     // Le tableau obtenu est passé en argument de bubbleSortNom() afin de trier ces quartiers par ordre alphabétique.
     Tableau<Quartier> finalQuartier;
-    for(int i=0;i<re2.nbElements;i++)
+    for(int i=0;i<quartier_sous_moyenne.nbElements;i++)
     {
         Tableau<Quartier> memeQuartier;
         
         int debut = i;
-        memeQuartier.ajouter(re2[debut]);
-        while ((i<re2.nbElements-1) && (re2[debut].MoyenneQuartier() == re2[i+1].MoyenneQuartier()))
+        memeQuartier.ajouter(quartier_sous_moyenne[debut]);
+        while ((i<quartier_sous_moyenne.nbElements-1) && (quartier_sous_moyenne[debut].MoyenneQuartier() == quartier_sous_moyenne[i+1].MoyenneQuartier()))
         {
-            memeQuartier.ajouter(re2[i+1]);
+            memeQuartier.ajouter(quartier_sous_moyenne[i+1]);
             i++;
         }
         
         bubbleSortNom(memeQuartier);
         
-        finalQuartier += memeQuartier;
+        finalQuartier += memeQuartier; // overload de l'opérateur += pour les tableaux de quartiers explicité dans tableau.h
     }
     
     // Affichage des quartiers defavorables, par ordre croissant de Moyenne de quartier et par ordre alphabetique
@@ -203,9 +204,7 @@ int tp1(istream& entree)
     
     cout<<"d) Pourcentage de menages dont le revenu est faible: "<<round(((double)nombre_sous_seuil/(double)nombre_menage_total)*100.0)<<"%"<<endl;
     
-   
-    
-    return 0;
+   return 0;
 }
 
 
@@ -221,6 +220,9 @@ int main(int argc, const char** argv){
     // Gestion de l'entree :
     //  - lecture depuis un fichier si un argument est specifie;
     //  - sinon, lecture depuis std::cin.
+    
+ 
+    
     if(argc>1)
     {
          std::ifstream entree_fichier(argv[1]);
@@ -229,16 +231,18 @@ int main(int argc, const char** argv){
              std::cerr << "Erreur d'ouverture du fichier '" << argv[1] << "'" << std::endl;
              return 1;
          }
-         return tp1(entree_fichier);
+        
+          return tp1(entree_fichier);
+        
     }else
          return tp1(std::cin);
-
+    
+    
+    
+    
     return 0;
 }
 
 
 
     
-/*
- 
- */

@@ -21,5 +21,5 @@ clean:
 	rm -rf tp1 *~ *.o tp1.dSYM
 
 test: tp1
-	 ./tp1 data.txt
+	 ./tp1 data01.txt
  
