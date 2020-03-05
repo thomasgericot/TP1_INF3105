@@ -1,16 +1,5 @@
- /*
-  INF3105 -- Structures de données et algorithmes
-  UQAM | Département d'informatique
-  Hiver 2020 | TP1 | tableau.h
-*/
-/* modification prise en compte 
-*/
-// Ces deux lignes permettent d'éviter d'inclure 2 fois ce .h à la compilation.
-#if !defined(__TABLEAU_H__)
+ #if !defined(__TABLEAU_H__)
 #define __TABLEAU_H__
-/* 
-  heyeybcebd
-*/
 
 template <class T>
 class Tableau
@@ -38,7 +27,7 @@ class Tableau
 
     Tableau<T>&    operator = (const Tableau<T>& autre);
     
-    Tableau<T>&    operator += (const Tableau<T>& autre);
+    Tableau<T>&    operator += (const Tableau<T>& autre); 
 
     bool           operator == (const Tableau<T>& autre) const;
 
@@ -50,17 +39,7 @@ class Tableau
 };
 
 
-/*
- Puisque Tableau<T> est une classe générique, toutes ses définitions doivent être
- inclues après les déclarations. On peut quand même séparer les déclarations et
- les définitions en deux fichiers (tableau.h et tableau.hcc), à condition d'inclure le
- deuxième (tableau.hcc) à la fin du premier (tableau.h). Ainsi, un fichier source
- (.cc, .cpp, c++) qui inclut tableau.h inclura indirectement aussi tableau.hcc.
 
-*/
-
-//#include "tableau.hcc"
-/**** Début des définitions pouvant être mises dans tableau.hcc. ****/
 #include <assert.h>
 
 

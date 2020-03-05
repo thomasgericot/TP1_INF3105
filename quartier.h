@@ -16,20 +16,15 @@ using namespace std;
 class Quartier {
   public:
     string NomQuartier;
-    
     Tableau<Foyer> foyers;
   public:
     Quartier() {}
     Quartier(const Quartier&);
-    
     ~Quartier(){}
     void setName(string name) {NomQuartier=name;}
     void ajouterFoyer(Foyer f){foyers.ajouter(f);}
-    
     void effacer() {foyers.vider();}
-    
     int MoyenneQuartier();
-    
     Quartier& operator = (const Quartier&);
 
 

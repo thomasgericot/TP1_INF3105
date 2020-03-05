@@ -1,9 +1,3 @@
-/*
-  INF3105 -- Structures de donnÈes et algorithmes
-  UQAM | DÈpartement d'informatique
-  Hiver 2020 | TP1 | tp1.cpp
-*/
-
 #include <cmath>
 #include <cstdlib>
 #include <iostream>
@@ -20,12 +14,15 @@
 using namespace std;
 
 
-
+// Fonction permettant de calculer le seuil de pauvrete pour chaque menage de tous les quartiers.
 int seuil_pauvrete(int nbPersonnes)
 {
     return round(7000+850*(nbPersonnes-2));
 }
 
+
+// bubbleSortNom permet de trier les noms de quartiers possédant les revenus moyens les plus bas dans l'ordre
+// alphabétique.
 void bubbleSortNom(Tableau<Quartier>& arr)
 {
     int n = arr.nbElements;
@@ -45,12 +42,14 @@ void bubbleSortNom(Tableau<Quartier>& arr)
     }
 }
 
+
+// bubbleSortMoyenne permet de trier les revenus moyens des quartier les plus faibles dans l'ordre croissant.
 void bubbleSortMoyenne(Tableau<Quartier>& arr)
 {
     int n = arr.nbElements;
     for (int i = 0; i < n-1; i++)
     {
-        // Last i elements are already in place
+        
         for (int j = 0; j < n-i-1; j++)
         {
             if (arr[j].MoyenneQuartier() > arr[j+1].MoyenneQuartier())
@@ -64,18 +63,22 @@ void bubbleSortMoyenne(Tableau<Quartier>& arr)
     }
 }
 
+
+
+
 int tp1(istream& entree)
 {
     
     Tableau<Quartier> re1= Tableau<Quartier>(8);
     Tableau<Quartier> re2= Tableau<Quartier>(8);
     
-    // parsing fichier
+    // Parsing fichier
     std::string line;
     bool ajouterFoyer=false;
     Quartier quartier_bas;
     Quartier quartier_haut;
     Quartier quartier;
+    
     while(std::getline(entree,line))
     {
         if( (line.find(";") == string::npos)&& (ajouterFoyer==false) )
@@ -101,7 +104,8 @@ int tp1(istream& entree)
         }
     }
     
-    // calculer moyenne
+    
+    // Affichage du revenu moyen de tous les quartiers.
     cout<<"a) ";
     int moyenne = 0;
     for(int i=0;i<re1.nbElements;i++)
@@ -111,7 +115,8 @@ int tp1(istream& entree)
     moyenne /=re1.nbElements;
     cout<<"Revenu moyen:\t"<<round(moyenne)<<endl;
     
-    // trouve quartier sous la moyenne
+    
+    // Trouve quartier sous la moyenne
     for(int i=0;i<re1.nbElements;i++)
     {
         if(re1[i].MoyenneQuartier()<=moyenne)
@@ -120,10 +125,11 @@ int tp1(istream& entree)
         }
     }
     
-    // Affichage croissant, probleme d'index + pb de types pointé pour l'ordre alphabétique
+    // Tri les moyennes de quartier des quartiers "pauvres" par ordre croissant.
     bubbleSortMoyenne(re2);
     
-    // verifie nom
+    // Stocke les quartiers ayant la meme Moyenne de quartier dans un tableau.
+    // Le tableau obtenu est passé en argument de bubbleSortNom() afin de trier ces quartiers par ordre alphabétique.
     Tableau<Quartier> finalQuartier;
     for(int i=0;i<re2.nbElements;i++)
     {
@@ -142,14 +148,15 @@ int tp1(istream& entree)
         finalQuartier += memeQuartier;
     }
     
-    // affichage
+    // Affichage des quartiers defavorables, par ordre croissant de Moyenne de quartier et par ordre alphabetique
+    //dans le cas d'une egalite.
     cout<<"b) Liste des quartiers defavorables.\n";
     for(int i=0;i<finalQuartier.nbElements;i++)
     {
         cout<<finalQuartier[i].NomQuartier<<"\t\t"<<"Revenu moyen: "<<finalQuartier[i].MoyenneQuartier()<<endl;
     }
     
-    // quartiers haut et bas
+    // Determination des quartiers possedant le plus petit et le plus grand revenu moyen.
     int revenu_quartier_bas=re1[0].MoyenneQuartier();
     int revenu_quartier_haut=re1[0].MoyenneQuartier();
     quartier_bas.NomQuartier=re1[0].NomQuartier;
@@ -170,17 +177,16 @@ int tp1(istream& entree)
         }
     }
     
-    // affichage
+    //Affichage de ces quartiers.
     cout<<"c)\n";
     cout<<quartier_bas.NomQuartier<<"\t\t"<<"Quartier avec le plus petit revenu moyen: "<<revenu_quartier_bas<<endl;
     cout<<quartier_haut.NomQuartier<<"\t\t"<<"Quartier avec le plus grand revenu moyen: "<<revenu_quartier_haut<<endl;
     
     
     
-    // % quartiers sous le seuil de pauvrete
+    // % de quartiers sous le seuil de pauvrete.
     int nombre_sous_seuil=0;
     int nombre_menage_total=0;
-    
     
     for(int i=0;i<re1.nbElements;i++)
     {
@@ -197,6 +203,8 @@ int tp1(istream& entree)
     
     cout<<"d) Pourcentage de menages dont le revenu est faible: "<<round(((double)nombre_sous_seuil/(double)nombre_menage_total)*100.0)<<"%"<<endl;
     
+   
+    
     return 0;
 }
 
@@ -210,8 +218,8 @@ int tp1(istream& entree)
 
 
 int main(int argc, const char** argv){
-    // Gestion de l'entrÈe :
-    //  - lecture depuis un fichier si un argument est spÈcifiÈ;
+    // Gestion de l'entree :
+    //  - lecture depuis un fichier si un argument est specifie;
     //  - sinon, lecture depuis std::cin.
     if(argc>1)
     {
